@@ -19,9 +19,7 @@ export default function TextForm(props) {
         props.showAlert("Cleared the Text","success");
     }
     const handleCopyClick = ()=>{
-        var text = document.getElementById("mybox");
-        text.select();
-        navigator.clipboard.writeText(text.value);
+        navigator.clipboard.writeText(text);
         props.showAlert("Copied the Text","success");
     }
     const handleonChange = (event)=>{
@@ -32,21 +30,21 @@ export default function TextForm(props) {
   return (
     <>
     <div className="container" style={{color: props.mode==="dark"?"white":"black"}}>
-        <h1>{props.heading}</h1>
+        <h1 className="mb-3">{props.heading}</h1>
         <div className="form-group">
-            <textarea className="form-control border border-dark" value={text} onChange={handleonChange} id="mybox" rows="12" placeholder="Enter Your Text Here" style={{backgroundColor: props.mode==="dark"?"grey":"white",color: props.mode==="dark"?"white":"black"}}></textarea>
+            <textarea className="form-control border border-dark" value={text} onChange={handleonChange} id="mybox" rows="12" placeholder="Enter Your Text Here" style={{backgroundColor: props.mode==="dark"?"#1b3969":"white",color: props.mode==="dark"?"white":"black"}}></textarea>
         </div>
-        <button className="btn btn-primary mx-1" onClick={handleUpClick}>Convert To UpperCase</button>
-        <button className="btn btn-primary mx-1" onClick={handleLowClick}>Convert To LowerCase</button>
-        <button className="btn btn-success mx-1" onClick={handleCopyClick}>Copy Text</button>
-        <button className="btn btn-danger mx-1" onClick={handleClearClick}>Clear Text</button>
+        <button disabled={text.length===0} className="btn btn-primary mx-1" onClick={handleUpClick}>Convert To UpperCase</button>
+        <button disabled={text.length===0} className="btn btn-primary mx-1" onClick={handleLowClick}>Convert To LowerCase</button>
+        <button disabled={text.length===0} className="btn btn-success mx-1" onClick={handleCopyClick}>Copy Text</button>
+        <button disabled={text.length===0} className="btn btn-danger mx-1" onClick={handleClearClick}>Clear Text</button>
     </div>
     <div className="container my-3" style={{color: props.mode==="dark"?"white":"black"}}>
         <h2>Your Text Summary:</h2>
         <p>{text.trim().length === 0 ? 0 : text.trim().split(/\s+/).length} words and {text.length} characters</p>
         <p> {text.trim().length === 0 ? 0 : (0.008 * text.trim().split(/\s+/).length).toFixed(2)} minutes read time.</p>
         <h2>Preview</h2>
-        <p>{text.length>0?text:"Enter something in textarea to preview it."}</p>
+        <p>{text.length>0?text:"Nothing to Preview."}</p>
     </div>
     </>
   );
