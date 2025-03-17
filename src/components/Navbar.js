@@ -1,6 +1,15 @@
 import React from 'react';
 import { Link } from "react-router-dom";
 
+const labelstyleLight = {
+  fontWeight: "500",
+  color:"black"
+}
+const labelstyleDark = {
+  fontWeight: "500",
+  color:"white"
+}
+
 export default function Navbar(props) {
   return (
     <nav className={`navbar navbar-expand-lg navbar-${props.mode} bg-${props.mode} shadow-sm`} style={{ padding: "15px 30px" }}>
@@ -23,7 +32,7 @@ export default function Navbar(props) {
 
         <div className="form-check form-switch d-flex align-items-center">
           <input className="form-check-input me-2" type="checkbox" id="customSwitch1" onClick={props.toggleMode} />
-          <label className="form-check-label" htmlFor="customSwitch1" style={{ fontWeight: "500" }}>Enable Dark Mode</label>
+          <label className="form-check-label" htmlFor="customSwitch1" style={props.mode==="dark"?labelstyleDark:labelstyleLight}>Enable Dark Mode</label>
         </div>
       </div>
     </nav>

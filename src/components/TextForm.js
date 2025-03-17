@@ -123,7 +123,8 @@ export default function TextForm(props) {
         fontSize: "16px",
         borderRadius: "5px",
         cursor: "pointer",
-        border: "none"
+        border: "none",
+        fontWeight:"500"
     };
 
     return (
@@ -134,11 +135,11 @@ export default function TextForm(props) {
                     <textarea className="form-control" value={text} onChange={handleonChange} id="mybox" rows="8" placeholder="Enter Your Text Here" style={textAreaStyle}></textarea>
                 </div>
                 <div style={buttonContainerStyle}>
-                    <button disabled={text.length === 0} style={{ ...buttonStyle, backgroundColor: "#007bff", color: "white" }} onClick={handleUpClick}>UpperCase</button>
+                <button disabled={text.length === 0} style={{ ...buttonStyle, backgroundColor: "#007bff", color:"white" }} onClick={handleUpClick}>UpperCase</button>
                     <button disabled={text.length === 0} style={{ ...buttonStyle, backgroundColor: "#007bff", color: "white" }} onClick={handleLowClick}>LowerCase</button>
                     <button disabled={text.length === 0} style={{ ...buttonStyle, backgroundColor: "#28a745", color: "white" }} onClick={handleCopyClick}>Copy</button>
                     <button disabled={text.length === 0} style={{ ...buttonStyle, backgroundColor: "#dc3545", color: "white" }} onClick={handleClearClick}>Clear</button>
-                    <button disabled={text.length === 0} style={{ ...buttonStyle, backgroundColor: "#ffc107", color: "black" }} onClick={handleCapitalizeWords}>Capitalize</button>
+                    <button disabled={text.length === 0} style={{ ...buttonStyle, backgroundColor: "#ffc107", color: "white" }} onClick={handleCapitalizeWords}>Capitalize</button>
                     <button disabled={text.length === 0} style={{ ...buttonStyle, backgroundColor: "#17a2b8", color: "white" }} onClick={handleRemoveExtraSpaces}>Trim Spaces</button>
                     <button disabled={text.length === 0} style={{ ...buttonStyle, backgroundColor: "#6f42c1", color: "white" }} onClick={handleReverseText}>Reverse</button>
                     <button disabled={text.length === 0} style={{ ...buttonStyle, backgroundColor: "#20c997", color: "white" }} onClick={handleSortWords}>Sort Words</button>
